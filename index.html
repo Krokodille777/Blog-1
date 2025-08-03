@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Steps Into Russian</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .header .author {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .header .year {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+        
+        .letter-section {
+            padding: 40px;
+            border-bottom: 2px solid #ecf0f1;
+            position: relative;
+        }
+        
+        .letter-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .letter-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+        
+        .letter-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #e74c3c;
+            min-width: 120px;
+        }
+        
+        .letter-info h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .letter-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .word-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+        
+        .word-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .word-russian {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .word-pronunciation {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            font-family: monospace;
+        }
+        
+        .word-english {
+            font-size: 1.1rem;
+            color: #27ae60;
+            font-weight: 500;
+        }
+        
+        .alphabet-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .alphabet-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        
+        .alphabet-row {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .alphabet-letters {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 8px;
+        }
+        
+        .alphabet-pronunciation {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-family: monospace;
+        }
+        
+        .tasks-section {
+            background: #f8f9fa;
+            padding: 60px 40px;
+        }
+        
+        .tasks-section h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .task-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+        
+        .task-card h2 {
+            color: #e74c3c;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .task-number {
+            background: #e74c3c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .task-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .task-text {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .random-words-section {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .random-words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .random-word-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .random-word-card:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .random-word-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .random-word-russian {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .random-word-english {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .generate-btn {
+            background: white;
+            color: #27ae60;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .generate-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .header h2 { font-size: 1.5rem; }
+            .letter-number { font-size: 3rem; }
+            .words-grid { grid-template-columns: 1fr; }
+            .alphabet-letters { font-size: 1.5rem; letter-spacing: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>FIRST STEPS INTO Russian</h1>
+            <h2>RUSSIAN LETTERS</h2>
+            <div class="author">Made by Original Kroko</div>
+            <div class="year">2025</div>
+        </header>
+
+        <!-- Letter А -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">1. Аа</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'u' in 'summer' or 'mud'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🏥</div>
+                    <div class="word-russian">Аптека</div>
+                    <div class="word-pronunciation">[uhp-tjé-kuh]</div>
+                    <div class="word-english">Pharmacy</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🚌</div>
+                    <div class="word-russian">Автобус</div>
+                    <div class="word-pronunciation">[uhv-tóh-boos]</div>
+                    <div class="word-english">Bus</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍊</div>
+                    <div class="word-russian">Апельсин</div>
+                    <div class="word-pronunciation">[uhp-pel'-s'í:n]</div>
+                    <div class="word-english">Orange</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏛️</div>
+                    <div class="word-russian">Амстердам</div>
+                    <div class="word-pronunciation">[uhm-ster-dúhm]</div>
+                    <div class="word-english">Amsterdam</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦢</div>
+                    <div class="word-russian">Аист</div>
+                    <div class="word-pronunciation">[úh-jist]</div>
+                    <div class="word-english">Stork</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍍</div>
+                    <div class="word-russian">Ананас</div>
+                    <div class="word-pronunciation">[uh-nuh-núhs]</div>
+                    <div class="word-english">Pineapple</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letter Б -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">2. Бб</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'b' in 'bell' or 'bird'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👨‍👦</div>
+                    <div class="word-russian">Брат</div>
+                    <div class="word-pronunciation">[bruht]</div>
+                    <div class="word-english">Brother</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍌</div>
+                    <div class="word-russian">Банан</div>
+                    <div class="word-pronunciation">[buh-núhn]</div>
+                    <div class="word-english">Banana</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👵</div>
+                    <div class="word-russian">Бабушка</div>
+                    <div class="word-pronunciation">[búh-boo-shkuh]</div>
+                    <div class="word-english">Grandma</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🎫</div>
+                    <div class="word-russian">Билет</div>
+                    <div class="word-pronunciation">[bí-ljet]</div>
+                    <div class="word-english">Ticket</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦫</div>
+                    <div class="word-russian">Бобёр</div>
+                    <div class="word-pronunciation">[boh-bjór]</div>
+                    <div class="word-english">Beaver</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏦</div>
+                    <div class="word-russian">Банк</div>
+                    <div class="word-pronunciation">[buhnk]</div>
+                    <div class="word-english">Bank</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letter В -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">3. Вв</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'v' in 'vase' or 'vintage'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🐺</div>
+                    <div class="word-russian">Волк</div>
+                    <div class="word-pronunciation">[vohlk]</div>
+                    <div class="word-english">Wolf</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">💃</div>
+                    <div class="word-russian">Вальс</div>
+                    <div class="word-pronunciation">[vuhl's]</div>
+                    <div class="word-english">Waltz</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍇</div>
+                    <div class="word-russian">Виноград</div>
+                    <div class="word-pronunciation">[vi-noh-grúhd]</div>
+                    <div class="word-english">Grape</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🇭🇺</div>
+                    <div class="word-russian">Венгрия</div>
+                    <div class="word-pronunciation">[Vún-gri-juh]</div>
+                    <div class="word-english">Hungary</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍴</div>
+                    <div class="word-russian">Вилка</div>
+                    <div class="word-pronunciation">[Vú-lkuh]</div>
+                    <div class="word-english">Fork</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">💧</div>
+                    <div class="word-russian">Вода</div>
+                    <div class="word-pronunciation">[voh-dúh]</div>
+                    <div class="word-english">Water</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue with more letters... for brevity showing a few more -->
+        
+        <!-- Letter Г -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">4. Гг</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'g' in 'grape' or 'girl'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👁️</div>
+                    <div class="word-russian">Глаз</div>
+                    <div class="word-pronunciation">[gluhz]</div>
+                    <div class="word-english">Eye</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">⛈️</div>
+                    <div class="word-russian">Гром</div>
+                    <div class="word-pronunciation">[grohm]</div>
+                    <div class="word-english">Thunder</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏙️</div>
+                    <div class="word-russian">Город</div>
+                    <div class="word-pronunciation">[gúh-roht]</div>
+                    <div class="word-english">City/Town</div>
+                </div>
+    
+                <div class="word-card">
+                    <div class="word-icon">🪺</div>
+                    <div class="word-russian">Гнездо</div>
+                    <div class="word-pronunciation">[gnje-zdóh]</div>
+                    <div class="word-english">Nest</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🎮</div>
+                    <div class="word-russian">Геймпад</div>
+                    <div class="word-pronunciation">[gajm-púhd]</div>
+                    <div class="word-english">Gamepad/Game console</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦸</div>
+                    <div class="word-russian">Герой</div>
+                    <div class="word-pronunciation">[gje-rúhj]</div>
+                    <div class="word-english">Hero</div>
+                </div>
+         </div>
+        </section>
+
+        <!-- Letter Д -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">5. Дд</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'd' in 'dog' or 'dollar'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🏠</div>
+                    <div class="word-russian">Дом</div>
+                    <div class="word-pronunciation">[dohm]</div>
+                    <div class="word-english">House/Home</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🌳</div>
+                    <div class="word-russian">Дерево</div>
+                    <div class="word-pronunciation">[djé-rje-voh]</div>
+                    <div class="word-english">Tree</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👨‍⚕️</div>
+                    <div class="word-russian">Доктор</div>
+                    <div class="word-pronunciation">[dóhk-tohr]</div>
+                    <div class="word-english">Doctor</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👧</div>
+                    <div class="word-russian">Девочка</div>
+                    <div class="word-pronunciation">[djé-voh-chkuh]</div>
+                    <div class="word-english">Girl</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🛋️</div>
+                    <div class="word-russian">Диван</div>
+                    <div class="word-pronunciation">[di-vúhn]</div>
+                    <div class="word-english">Sofa</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src="https://pictures.pibig.info/uploads/posts/2023-04/1680403490_pictures-pibig-info-p-narisovannii-dyatel-krasivo-1.png" width="50" height="50"></div>
+                    <div class="word-russian">Дятел</div>
+                    <div class="word-pronunciation">[djá-tiel]</div>
+                    <div class="word-english">Woodpecker</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">6. Ее</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'ye' in 'yellow' or 'yes' or 'e' in 'send' or 'lens'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🎄</div>
+                    <div class="word-russian">Ель</div>
+                    <div class="word-pronunciation">[jel']</div>
+                    <div class="word-english">Spruce</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦝</div>
+                    <div class="word-russian">Енот</div>
+                    <div class="word-pronunciation">[je-nóht]</div>
+                    <div class="word-english">Racoon</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏰</div>
+                    <div class="word-russian">Европа</div>
+                    <div class="word-pronunciation">[jev-róh-puh]</div>
+                    <div class="word-english">Europe</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍽️</div>
+                    <div class="word-russian">Еда</div>
+                    <div class="word-pronunciation">[je-dúh]</div>
+                    <div class="word-english">Food</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">1️⃣</div>
+                    <div class="word-russian">Единица</div>
+                    <div class="word-pronunciation">[je-dje-ní-tsuh]</div>
+                    <div class="word-english">One</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src="data:image/png;base64,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" width="50" height="50"></div>
+                    <div class="word-russian">Египет</div>
+                    <div class="word-pronunciation">[je-gí-pjet]</div>
+                    <div class="word-english">Egypt</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">7. Ёё</div>
+                <div class="letter-info">
+                    <h3>Letter "ё" is very very rare to meet in text nowadays. Mostly becaause people change it to "e", even though the sound remains the same. But it still needs to be learnt as it is also a part of the alphabet.</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🦔</div>
+                    <div class="word-russian">Ёж</div>
+                    <div class="word-pronunciation">[józh]</div>
+                    <div class="word-english">Hedgehog</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🎄</div>
+                    <div class="word-russian">Ёлка</div>
+                    <div class="word-pronunciation">[jól-ka]</div>
+                    <div class="word-english">Spruce</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src = "data:image/jpeg;base64,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" width="50" height="50"></div>
+                    <div class="word-russian">Ёрш</div>
+                    <div class="word-pronunciation">[jórsh]</div>
+                    <div class="word-english">Ruff</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">8. Жж</div>
+                <div class="letter-info">
+                    <h3>It sounds like French 'j(zh)' in 'Juan' or 'Jamie'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🦒</div>
+                    <div class="word-russian">Жираф</div>
+                    <div class="word-pronunciation">[zhi-rúhf]</div>
+                    <div class="word-english">Giraffe</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🌍</div>
+                    <div class="word-russian">Жизнь</div>
+                    <div class="word-pronunciation">[zhizn']</div>
+                    <div class="word-english">Life</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src = "https://c0.klipartz.com/pngpicture/912/629/gratis-png-lingote-de-hierro-mineral-de-acero-metal-hierro-thumbnail.png" width = "50" height = "50"></div>
+                    <div class="word-russian">Железо</div>
+                    <div class="word-pronunciation">[zhe-ljé-zoh]</div>
+                    <div class="word-english">Iron</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">💛</div>
+                    <div class="word-russian">Желтый</div>
+                    <div class="word-pronunciation">[zhóh-ltyi]</div>
+                    <div class="word-english">Yellow</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍮</div>
+                    <div class="word-russian">Желе</div>
+                    <div class="word-pronunciation">[zhe-ljé]</div>
+                    <div class="word-english">Jelly</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👩‍🦰</div>
+                    <div class="word-russian">Женщина</div>
+                    <div class="word-pronunciation">[zhen-shch'i-núh]</div>
+                    <div class="word-english">Woman</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">9. Зз</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'z' in 'zebra' or 'zombie'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🐇</div>
+                    <div class="word-russian">Заяц</div>
+                    <div class="word-pronunciation">[zúh-jats]</div>
+                    <div class="word-english">Hare</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐍</div>
+                    <div class="word-russian">Змея</div>
+                    <div class="word-pronunciation">[zmje-já]</div>
+                    <div class="word-english">Snake</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">❄️</div>
+                    <div class="word-russian">Зима</div>
+                    <div class="word-pronunciation">[zi-múh]</div>
+                    <div class="word-english">Winter</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🌍</div>
+                    <div class="word-russian">Земля</div>
+                    <div class="word-pronunciation">[zje-mljá]</div>
+                    <div class="word-english">Ground/Earth</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">💚</div>
+                    <div class="word-russian">Зелёный</div>
+                    <div class="word-pronunciation">[zje-ljóh-nyi]</div>
+                    <div class="word-english">Green</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦓</div>
+                    <div class="word-russian">Зебра</div>
+                    <div class="word-pronunciation">[zjé-bruh]</div>
+                    <div class="word-english">Zebra</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">10. Ии</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'i' or 'e' in 'feel' or 'swim'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">⚽</div>
+                    <div class="word-russian">Игра</div>
+                    <div class="word-pronunciation">[ig-rúh]</div>
+                    <div class="word-english">Game</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🧸</div>
+                    <div class="word-russian">Игрушка</div>
+                    <div class="word-pronunciation">[ig-rúsh-ka]</div>
+                    <div class="word-english">Toy</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">📚</div>
+                    <div class="word-russian">История</div>
+                    <div class="word-pronunciation">[is-tóh-ri-ja]</div>
+                    <div class="word-english">History</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src ="data:image/png;base64,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" width = "50"  height = "50"></div>
+                    <div class="word-russian">Индия</div>
+                    <div class="word-pronunciation">[in-dí-ja]</div>
+                    <div class="word-english">India</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src = "https://media.istockphoto.com/id/1353890244/vector/identification-card-vector-icon-name-tag-icon-flat-design-style.jpg?s=612x612&w=0&k=20&c=OreI8pvKRghaV9VSj8EXok4zet51kdGXU2Q0dOu72bQ=" width = "50" height = "50"></div>
+                    <div class="word-russian">Имя</div>
+                    <div class="word-pronunciation">[im'-úh]</div>
+                    <div class="word-english">Name</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👽</div>
+                    <div class="word-russian">Инопланетянин</div>
+                    <div class="word-pronunciation">[i-noh-pluh-nje-tjá-nin]</div>
+                    <div class="word-english">Alien</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">11. Йй</div>
+                <div class="letter-info">
+                    <h3>This letter isn't rare. You can meet it in the middle of words or at their ending. But there are only a few words which start with it.</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon"><img src = "https://media.istockphoto.com/id/2191390656/vector/blueberry-yogurt-in-a-plastic-cup-and-spoon-vector-illustration.jpg?s=612x612&w=0&k=20&c=_YDcB60C6tyHB1fCaYfdrXRzuTyRcGJSpI4_p-tCpqM=" width = "50" height = "50"></div>
+                    <div class="word-russian">Йогурт</div>
+                    <div class="word-pronunciation">[jó-gurt]</div>
+                    <div class="word-english">Yoghurt</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🪀</div>
+                    <div class="word-russian">Йо-Йо</div>
+                    <div class="word-pronunciation">[joh-joh]</div>
+                    <div class="word-english">Yo-Yo</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🧘‍♀️</div>
+                    <div class="word-russian">Йога</div>
+                    <div class="word-pronunciation">[joh-guh]</div>
+                    <div class="word-english">Yoga</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src = "https://media.istockphoto.com/id/1397364782/vector/glass-bottle-of-iodine-with-a-pipette.jpg?s=612x612&w=0&k=20&c=bMkDDpoJKQwDWLJZE_L1fYmVrcDWX-affQ4r_Dg8JBY=" width = "50" height = "50"></div>
+                    <div class="word-russian">Йод</div>
+                    <div class="word-pronunciation">[jóht]</div>
+                    <div class="word-english">Iodine</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">12. Кк</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'k' or 'c' in 'clock' or 'key'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🐱</div>
+                    <div class="word-russian">Кошка</div>
+                    <div class="word-pronunciation">[kóh-shkuh]</div>
+                    <div class="word-english">Cat{female}</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🔑</div>
+                    <div class="word-russian">Ключ</div>
+                    <div class="word-pronunciation">[kljuch]</div>
+                    <div class="word-english">Key</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐨</div>
+                    <div class="word-russian">Коала</div>
+                    <div class="word-pronunciation">[koh-úh-luh]</div>
+                    <div class="word-english">Koala</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">📖</div>
+                    <div class="word-russian">Книга</div>
+                    <div class="word-pronunciation">[kní-guh]</div>
+                    <div class="word-english">Book</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src = "https://png.pngtree.com/png-vector/20191213/ourmid/pngtree-bottle-of-tomato-ketchup-vector-illustration-with-flat-design-png-image_2088342.jpg" width = "50" height = "50"></div>
+                    <div class="word-russian">Кетчуп</div>
+                    <div class="word-pronunciation">[kjet-chúp]</div>
+                    <div class="word-english">Ketchup</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🗺️</div>
+                    <div class="word-russian">Карта</div>
+                    <div class="word-pronunciation">[kúhr-tuh]</div>
+                    <div class="word-english">Map/Card</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">13. Лл</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'l' in 'love' or 'lion'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🦁</div>
+                    <div class="word-russian">Лев</div>
+                    <div class="word-pronunciation">[ljev]</div>
+                    <div class="word-english">Lion</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🛥️</div>
+                    <div class="word-russian">Лодка</div>
+                    <div class="word-pronunciation">[lóhd-kuh]</div>
+                    <div class="word-english">Boat</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦊</div>
+                    <div class="word-russian">Лиса</div>
+                    <div class="word-pronunciation">[lí-suh]</div>
+                    <div class="word-english">Fox</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">😊</div>
+                    <div class="word-russian">Лицо</div>
+                    <div class="word-pronunciation">[li-tsóh]</div>
+                    <div class="word-english">Face</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐸</div>
+                    <div class="word-russian">Лягушка</div>
+                    <div class="word-pronunciation">[lja-gú-shkuh]</div>
+                    <div class="word-english">Frog</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🌕</div>
+                    <div class="word-russian">Луна</div>
+                    <div class="word-pronunciation">[lu-núh]</div>
+                    <div class="word-english">Moon</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">14. Мм</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'm' in 'mum' or 'mountain'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👩‍👧</div>
+                    <div class="word-russian">Мама</div>
+                    <div class="word-pronunciation">[múh-muh]</div>
+                    <div class="word-english">Mother/Mum</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐻</div>
+                    <div class="word-russian">Медведь</div>
+                    <div class="word-pronunciation">[mjed-vjéd']</div>
+                    <div class="word-english">Bear</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🌊</div>
+                    <div class="word-russian">Море</div>
+                    <div class="word-pronunciation">[móh-rje]</div>
+                    <div class="word-english">Sea</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👦</div>
+                    <div class="word-russian">Мальчик</div>
+                    <div class="word-pronunciation">[múhl'-chik]</div>
+                    <div class="word-english">Boy</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐭</div>
+                    <div class="word-russian">Мышь</div>
+                    <div class="word-pronunciation">[mysh]</div>
+                    <div class="word-english">Mouse</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🥛</div>
+                    <div class="word-russian">Молоко</div>
+                    <div class="word-pronunciation">[muh-luh-kóh]</div>
+                    <div class="word-english">Milk</div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Letter Н (15) - Corrected last card -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">15. Нн</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'n' or 'kn' in 'now' or 'knife'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👃</div>
+                    <div class="word-russian">Нос</div>
+                    <div class="word-pronunciation">[nohs]</div>
+                    <div class="word-english">Nose</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">💻</div>
+                    <div class="word-russian">Ноутбук</div>
+                    <div class="word-pronunciation">[Noh-ut-bóók]</div>
+                    <div class="word-english">Laptop</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAC2CAMAAADHqGAYAAAAPFBMVEW6DC8AIFv///+LmrS5wtLz09nmp7TGOFUsQXP02+D67/FleJz99/hMYoyHlrL24OTsvMaalq+9scLkoK4mijDZAAABRklEQVR4nO3au04DMRRF0SEvQgIEyP//K12msRRFOoXn3rVry2dWPV6WQMfdo/3bsMN64pRYnCZ0dHR0dHT0OqGjo6Ojo6PXCR0dHR0dHb1O6Ojo6Ojo6HVCR0dHR0dHrxM6Ojo6Ojp6ndDR0dHR0dHrhI6Ojo6Ojl4ndPTN0I+BPl+hXxKLiZZdtuf0aUKPhY6Ojj5Z6LHQN0HfZ/sa06/hmUTL+FM7hN4x9I6hdwy9Y+gdQ+8YesfQO4beMfSOdaYfsl3HM9/hmUSdf0GE70NHR0efLPRY6Ohz00+BLut9z+m3xGKizOvqV+jzPApPhI6Ojo6Ojl4ndHR0dHR09Dqho6Ojo6Oj1wkdHR0dHR29Tujo6Ojo6Oh1QkdHR0dHR68TOjo6Ojo6ep3Q0dHR0dHR64S+Nfp7oJ+PR7/nYX/riXtiMdE/3Ed8h5jL2z8AAAAASUVORK5CYII=" width = "50" height = "50"></div>
+                    <div class="word-russian">Норвегия</div>
+                    <div class="word-pronunciation">[nuhr-vjé-gi-ja]</div>
+                    <div class="word-english">Norway</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🌙</div>
+                    <div class="word-russian">Ночь</div>
+                    <div class="word-pronunciation">[nohch]</div>
+                    <div class="word-english">Night</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">✂️</div>
+                    <div class="word-russian">Ножницы</div>
+                    <div class="word-pronunciation">[nóhzh-ni-tsy]</div>
+                    <div class="word-english">Scissors</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🔪</div>
+                    <div class="word-russian">Нож</div>
+                    <div class="word-pronunciation">[nohzh]</div>
+                    <div class="word-english">Knife</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letter O (16) -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">16. Oo</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'oh' in 'no', but 'uh' like in 'come' if the syllable is unstressed.</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👓</div>
+                    <div class="word-russian">Очки</div>
+                    <div class="word-pronunciation">[ohch-kí]</div>
+                    <div class="word-english">Glasses</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦅</div>
+                    <div class="word-russian">Орёл</div>
+                    <div class="word-pronunciation">[uh-rjól]</div>
+                    <div class="word-english">Eagle</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🔥</div>
+                    <div class="word-russian">Огонь</div>
+                    <div class="word-pronunciation">[uh-góhn']</div>
+                    <div class="word-english">Fire</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏞️</div>
+                    <div class="word-russian">Озеро</div>
+                    <div class="word-pronunciation">[óh-zje-ruh]</div>
+                    <div class="word-english">Lake</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐒</div>
+                    <div class="word-russian">Обезьяна</div>
+                    <div class="word-pronunciation">[uh-be-z'já-na]</div>
+                    <div class="word-english">Monkey</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">☁️</div>
+                    <div class="word-russian">Облако</div>
+                    <div class="word-pronunciation">[óh-bluh-ko']</div>
+                    <div class="word-english">Cloud</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">17. Пп</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'p' in 'plate' or 'potato'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👨‍👦</div>
+                    <div class="word-russian">Папа</div>
+                    <div class="word-pronunciation">[púh-puh]</div>
+                    <div class="word-english">Father/Dad</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🪵</div>
+                    <div class="word-russian">Палка</div>
+                    <div class="word-pronunciation">[púh-lkuh]</div>
+                    <div class="word-english">Stick</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🥧</div>
+                    <div class="word-russian">Пирог</div>
+                    <div class="word-pronunciation">[pje-róhg]</div>
+                    <div class="word-english">Pie</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏞️</div>
+                    <div class="word-russian">Парк</div>
+                    <div class="word-pronunciation">[puhrk]</div>
+                    <div class="word-english">Park</div>
+                </div>
+                <div class="word-card">
+                    <div class = "word-icon">🥳</div>
+                    <div class = "word-russian">Праздник</div>
+                    <div class = "word-pronunciation">[prúhz-dnik]</div>
+                    <div class = "word-english">(Party/Holiday)</div>
+                </div>
+                <div class = "word-card">
+                    <div class = "word-icon">🐼</div>
+                    <div class = "word-russian">Панда</div>
+                    <div class = "word-pronunciation">[páhn-duh]</div>
+                    <div class = "word-english">Panda</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">18. Рр</div>
+                <div class="letter-info">
+                    <h3>Now this letter might look pretty easy but still quite complicated for English Speakers, because this letter and letter 'r' have a big difference.</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🌊</div>
+                    <div class="word-russian">Река</div>
+                    <div class="word-pronunciation">[rhje-kúh]</div>
+                    <div class="word-english">(River)</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🖐️</div>
+                    <div class="word-russian">Рука</div>
+                    <div class="word-pronunciation">[rhoo-kúh]</div>
+                    <div class="word-english">(Toy)</div>
+                </div>
+          
+                <div class="word-card">
+                    <div class="word-icon">🌹</div>
+                    <div class="word-russian">Роза</div>
+                    <div class="word-pronunciation">[rhóh-zuh]</div>
+                    <div class="word-english">Rose</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👶</div>
+                    <div class="word-russian">Ребёнок</div>
+                    <div class="word-pronunciation">[rhje-bjó-nohk]</div>
+                    <div class="word-english">Child</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍚</div>
+                    <div class="word-russian">Рис</div>
+                    <div class="word-pronunciation">[rhees]</div>
+                    <div class="word-english">Rice</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦞</div>
+                    <div class="word-russian">Рак</div>
+                    <div class="word-pronunciation">[rhuhk]</div>
+                    <div class="word-english">Lobster</div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">
+                    19. Сс
+                </div>
+                <div class="letter-info">
+                    <h3>It sounds like English 's' or 'c' in 'sauce' or 'slice'</h3>
+                </div>
+            </div>
+
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🪑</div>
+                    <div class="word-russian">Стул</div>
+                    <div class="word-pronunciation">[stool]</div>
+                    <div class="word-english">(Chair)</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐶</div>
+                    <div class="word-russian">Собака</div>
+                    <div class="word-pronunciation">[suh-búh-kuh]</div>
+                    <div class="word-english">(Dog)</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐷</div>
+                    <div class="word-russian">Свинья</div>
+                    <div class="word-pronunciation">[svi-n'já]</div>
+                    <div class="word-english">(Pig)</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">❄️</div>
+                    <div class="word-russian">Снег</div>
+                    <div class="word-pronunciation">[snjeg]</div>
+                    <div class="word-english">(Snow)</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👨‍👩‍👧‍👦</div>
+                    <div class="word-russian">Семья</div>
+                    <div class="word-pronunciation">[sye-m'já]</div>
+                    <div class="word-english">(Family)</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title="Таблица иконки">Таблица иконки от RaftelDesign - Flaticon</a></div>
+                    <div class="word-russian">Стол</div>
+                    <div class="word-pronunciation">[stohl]</div>
+                    <div class="word-english">(Table)</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">
+                    20. Тт
+                </div>
+                <div class="letter-info">
+                    <h3>It sounds like English 't' in 'tiger' or 'tomato'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🎂</div>
+                    <div class="word-russian">Торт</div>
+                    <div class="word-pronunciation">[tohrt]</div>
+                    <div class="word-english">Cake</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐅</div>
+                    <div class="word-russian">Тигр</div>
+                    <div class="word-pronunciation">[tigr]</div>
+                    <div class="word-english">Tiger</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">📞</div>
+                    <div class="word-russian">Телефон</div>
+                    <div class="word-pronunciation">[tje-lje-fón]</div>
+                    <div class="word-english">Telephone</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🚋</div>
+                    <div class="word-russian">Трамвай</div>
+                    <div class="word-pronunciation">[truhm-váj]</div>
+                    <div class="word-english">Tram</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🚕</div>
+                    <div class="word-russian">Такси</div>
+                    <div class="word-pronunciation">[tuh-ksí]</div>
+                    <div class="word-english">(Taxi)</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍽️</div>
+                    <div class="word-russian">Тарелка</div>
+                    <div class="word-pronunciation">[tuh-rhjé-lkuh]</div>
+                    <div class="word-english">(Plate)</div>
+                
+
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="letter-header">
+                <div class="letter-number">21. Уу</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'oo' in 'book' or 'cook'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🦆</div>
+                    <div class="word-russian">Утка</div>
+                    <div class="word-pronunciation">[óót-kuh]</div>
+                    <div class="word-english">Duck</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏙️</div>
+                    <div class="word-russian">Улица</div>
+                    <div class="word-pronunciation">[óó-li-tsuh]</div>
+                    <div class="word-english">Street</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏫</div>
+                    <div class="word-russian">Университет</div>
+                    <div class="word-pronunciation">[oo-ni-vjerh-si-tjét]</div>
+                    <div class="word-english">University</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title="Украина иконки">Украина иконки от Freepik - Flaticon</a></div>
+                    <div class="word-russian">Украина</div>
+                    <div class="word-pronunciation">[oo-krhuh-í-nuh]</div>
+                    <div class="word-english">Ukraine</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👨‍🏫</div>
+                    <div class="word-russian">Учитель</div>
+                    <div class="word-pronunciation">[oo-chí-tjel']</div>
+                    <div class="word-english">Teacher</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🌄</div>
+                    <div class="word-russian">Утро</div>
+                    <div class="word-pronunciation">[óót-roh]</div>
+                    <div class="word-english">Morning</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">22. Фф</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'f' or 'ph' in 'flower' or 'photo'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">📷</div>
+                    <div class="word-russian">Фотография</div>
+                    <div class="word-pronunciation">[foh-tuh-grúh-fi-ja]</div>
+                    <div class="word-english">Photo</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🔦</div>
+                    <div class="word-russian">Фонарь</div>
+                    <div class="word-pronunciation">[fuh-núh(rh)']</div>
+                    <div class="word-english">Torch</div>
+                </div>            
+                <div class="word-card">
+                    <div class="word-icon">🪈</div>
+                    <div class="word-russian">Флейта</div>
+                    <div class="word-pronunciation">[fljej-túh]</div>
+                    <div class="word-english">Flute</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🔍</div>
+                    <div class="word-russian">Фокус</div>
+                    <div class="word-pronunciation">[fóh-koos]</div>
+                    <div class="word-english">Focus</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🎉</div>
+                    <div class="word-russian">Фестиваль</div>
+                    <div class="word-pronunciation">[fjes-ti-vuhl']</div>
+                    <div class="word-english">Festival</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">⛲</div>
+                    <div class="word-russian">Фонтан</div>
+                    <div class="word-pronunciation">[fuhn-túhn]</div>
+                    <div class="word-english">Fountain</div>
+
+                </div>
+            </div>
+        </section>
+
+         <!-- Letter Х (23) - Corrected nested grid -->
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">23. Хх</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'h' or 'kh' in 'hope' or 'khalif'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🏠</div>
+                    <div class="word-russian">Хата</div>
+                    <div class="word-pronunciation">[kháh-tuh]</div>
+                    <div class="word-english">Hut</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍞</div>
+                    <div class="word-russian">Хлеб</div>
+                    <div class="word-pronunciation">[khljep]</div>
+                    <div class="word-english">Bread</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦚</div>
+                    <div class="word-russian">Хвост</div>
+                    <div class="word-pronunciation">[khvohst]</div>
+                    <div class="word-english">Tail</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐹</div>
+                    <div class="word-russian">Хомяк</div>
+                    <div class="word-pronunciation">[khoh-mják]</div>
+                    <div class="word-english">Hamster</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🏠</div>
+                    <div class="word-russian">Хозяин</div>
+                    <div class="word-pronunciation">[khoh-zjá-in]</div>
+                    <div class="word-english">Host</div>
+                </div>
+                <div class="word-card">
+                     <div class="word-icon"><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Finland.svg/250px-Flag_of_Finland.svg.png" alt="Finland Flag" width = "50" height = "50"></div>
+                    <div class="word-russian">Хельсинки</div>
+                    <div class="word-pronunciation">[khjél'-sin-ki]</div>
+                    <div class="word-english">Helsinki</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">24. Цц</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'ts' in 'tsar'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👑</div>
+                    <div class="word-russian">Царь</div>
+                    <div class="word-pronunciation">[tsuh(rh)']</div>
+                    <div class="word-english">Tsar</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🔢</div>
+                    <div class="word-russian">Цифра</div>
+                    <div class="word-pronunciation">[tsýf-rhuh]</div>
+                    <div class="word-english">Digit/Numeral</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">⛪</div>
+                    <div class="word-russian">Церковь</div>
+                    <div class="word-pronunciation">[tsár-kohv']</div>
+                    <div class="word-english">Church</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐥</div>
+                    <div class="word-russian">Цыплёнок</div>
+                    <div class="word-pronunciation">[tsyp-lyó-nok]</div>
+                    <div class="word-english">Baby chicken</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🎪</div>
+                    <div class="word-russian">Цирк</div>
+                    <div class="word-pronunciation">[tsyrhk]</div>
+                    <div class="word-english">Circus</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">💰</div>
+                    <div class="word-russian">Цена</div>
+                    <div class="word-pronunciation">[tsa-núh]</div>
+                    <div class="word-english">Price</div>
+                </div>
+            </div>
+        </section>
+
+         <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">25. Чч</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'ch' in 'chair' or 'chicken'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">👶</div>
+                    <div class="word-russian">Человек</div>
+                    <div class="word-pronunciation">[cha-lóh-vjek]</div>
+                    <div class="word-english">Human/Person</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🕰️</div>
+                    <div class="word-russian">Часы</div>
+                    <div class="word-pronunciation">[chuh-sý]</div>
+                    <div class="word-english">Clock</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">☕</div>
+                    <div class="word-russian">Чашка</div>
+                    <div class="word-pronunciation">[chú-shkuh]</div>
+                    <div class="word-english">Cup</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍵</div>
+                    <div class="word-russian">Чай</div>
+                    <div class="word-pronunciation">[chuhj]</div>
+                    <div class="word-english">Tea</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🫖</div>
+                    <div class="word-russian">Чайник</div>
+                    <div class="word-pronunciation">[chúhj-nik]</div>
+                    <div class="word-english">Teapot/Kettle</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🥔</div>
+                    <div class="word-russian">Чипсы</div>
+                    <div class="word-pronunciation">[chí-psy]</div>
+                    <div class="word-english">Crisps</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">26. Шш</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'osh' in 'fish' or 'shampoo'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🏫</div>
+                    <div class="word-russian">Школа</div>
+                    <div class="word-pronunciation">[shkóh-luh]</div>
+                    <div class="word-english">School</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🎩</div>
+                    <div class="word-russian">Шляпа</div>
+                    <div class="word-pronunciation">[shljá-puh]</div>
+                    <div class="word-english">Hat</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🍫</div>
+                    <div class="word-russian">Шоколад</div>
+                    <div class="word-pronunciation">[shoh-kuh-lúht]</div>
+                    <div class="word-english">Chocolate</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐝</div>
+                    <div class="word-russian">Шмель</div>
+                    <div class="word-pronunciation">[shmjel']</div>
+                    <div class="word-english">Bumblebee</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title=" иконки"> иконки от Freepik - Flaticon</a></div>
+                    <div class="word-russian">Шимпанзе</div>
+                    <div class="word-pronunciation">[shim-puhn-zé]</div>
+                    <div class="word-english">Chimpanzee</div>
+                </div>
+            </div>
+            <div class="word-card">
+                <div class="word-icon">🗄️</div>
+                <div class="word-russian">Шкаф</div>
+                <div class="word-pronunciation">[shkúf]</div>
+                <div class="word-english">Wardrobe</div>
+            </div>
+
+            
+        </section>
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">27. Щщ</div>
+                <div class="letter-info">
+                    <h3>It sounds like English 'shch' in 'fresh cheese'</h3>
+                </div>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🪥</div>
+                    <div class="word-russian">Щётка</div>
+                    <div class="word-pronunciation">[shchyó-tkuh]</div>
+                    <div class="word-english">Brush</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title=" иконки"> иконки от Freepik - Flaticon</a></div>
+                    <div class="word-russian">Щука</div>
+                    <div class="word-pronunciation">[shchóó-kuh]</div>
+                    <div class="word-english">Pike</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🪨</div>
+                    <div class="word-russian">Щебень</div>
+                    <div class="word-pronunciation">[shchjé-ben']</div>
+                    <div class="word-english">Crushed Stone</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🐶</div>
+                    <div class="word-russian">Щенок</div>
+                    <div class="word-pronunciation">[shchje-nóhk]</div>
+                    <div class="word-english">Puppy</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🛡️</div>
+                    <div class="word-russian">Щит</div>
+                    <div class="word-pronunciation">[shchit]</div>
+                    <div class="word-english">Shield</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">😳</div>
+                    <div class="word-russian">Щека</div>
+                    <div class="word-pronunciation">[shchje-kúh]</div>
+                    <div class="word-english">Cheek</div>
+                </div>
+            </div>
+        </section>
+        <section class="letter-section">
+            And now we are going to meet three unique letters. They are not used in the start of the word and they don't have own sound. But they play a very important role in Russian language. Let's meet them.
+            <div class="letter-header">
+                <div class="letter-number">28. ъ</div>
+                <div class="letter-info">
+                    <h3>ъ is the rarest letter in the whole alphabet. It is used in the least amount of words. Though they are important. It doesn't actually have a sound but it makes letters (consonant letters only) sound absolutely solid. There are some rules how to put it correctly but it'll be a topic for another blog :]. In this blog I will mark it with UPPERCASE consonant which stands before it.</h3>
+                </div>
+
+            </div>
+            <div class="letter-header">
+                <div class="letter-number">29. ы</div>
+                <div class="letter-info">
+                    <h3>ы is the only letter from these three which has a sound. It doesn't look like any of English sounds. More like a deeply stemmed 'i'. In this blog I will mark it as 'y'. It's also forbidden to put in the start of the word.</h3>
+                </div>
+            </div>
+            <div class="letter-header">
+                <div class="letter-number">30. ь</div>
+                <div class="letter-info">
+                    <h3>Maybe ь is a very small letter without own sound it plays a huge role in russian language. Let it stay with any consonant (except ж. ш. ц, but why, you will see later) and it will make it softer. In the next chapter there will be more detailed explanation of this thing.In this blog I will mark it with "'" after each consonant which is neighbour to ь.</h3>
+                </div>
+            </div>
+            <div class = "word-grid">
+                <div class = "word-card">
+                    <div class="word-icon">📢</div>
+                    <div class="word-russian">Объявление</div>
+                    <div class="word-pronunciation">[uh-Bja-vljé-ni-je]</div>
+                    <div class="word-english">Announcement</div>
+                </div>
+            </div>
+            <div class = "word-card">
+                <div class="word-icon">🧀</div>
+                <div class="word-russian">Сыр</div>
+                <div class="word-pronunciation">[syrh]</div>
+                <div class="word-english">Cheese</div>
+            </div>
+            <div class = "word-card">
+                <div class="word-icon">🚢</div>
+                <div class="word-russian">Корабль</div>
+                <div class="word-pronunciation">[koh-rhúhbl']</div>
+                <div class="word-english">Ship</div>
+            </div>
+            <div class = "word-card">
+                <div class="word-icon">🚪</div>
+                <div class="word-russian">Въезд</div>
+                <div class="word-pronunciation">[Vjezt]</div>
+                <div class="word-english">Entrance (For transport)</div>
+            </div>
+            <div class = "word-card">
+                <div class="word-icon">👖</div>
+                <div class="word-russian">Джинсы</div>
+                <div class="word-pronunciation">[dzhýn-sy]</div>
+                <div class="word-english">Jeans</div>
+            </div>
+            <div class = "word-card">
+                <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title="металл иконки">Металл иконки от andinur - Flaticon</a></div>
+                <div class="word-russian">Сталь</div>
+                <div class="word-pronunciation">[stuhl']</div>
+                <div class="word-english">Steel</div>
+            </div>
+        </section>
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">31. Ээ</div>
+                <div class="letter-info">
+                    <h3>Э sounds like English 'e' in 'bed' or 'red'. I will mark it as 'e'</h3>
+                </div>
+            </div>
+            <div class="letter-header">
+                <div class="letter-number">32. Юю</div>
+                <div class="letter-info">
+                    <h3>Ю sounds like English 'yu' or 'u' in 'uni' or 'yurt'. I will mark it as 'ju'</h3>
+                </div>
+            </div>
+            <div class = "word-grid">
+                <div class = "word-card">
+                    <div class="word-icon">⚡</div>
+                    <div class="word-russian">Электричество</div>
+                    <div class="word-pronunciation">[a-ljek-trhí-chje-stvoh]</div>
+                    <div class="word-english">Electricity</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">📡</div>
+                    <div class="word-russian">Эхо</div>
+                    <div class="word-pronunciation">[á-khoh]</div>
+                    <div class="word-english">Echo</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title="экватор иконки">Экватор иконки от Karyative - Flaticon</a></div>
+                    <div class="word-russian">Экватор</div>
+                    <div class="word-pronunciation">[a-kvúh-tohrh]</div>
+                    <div class="word-english">Equator</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title="юбка иконки">Юбка иконки от Freepik - Flaticon</a></div>
+                    <div class="word-russian">Юбка</div>
+                    <div class="word-pronunciation">[jú-bkuh]</div>
+                    <div class="word-english">Skirt</div>
+                </div>
+                <div class = "word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title="волчок иконки">Волчок иконки от Freepik - Flaticon</a></div>
+                    <div class="word-russian">Юла</div>
+                    <div class="word-pronunciation">[ju-lá]</div>
+                    <div class="word-english">Spinning Top</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title="Юпитер иконки">Юпитер иконки от Freepik - Flaticon</a></div>
+                    <div class="word-russian">Юпитер</div>
+                    <div class="word-pronunciation">[ju-pí-tjerh]</div>
+                    <div class="word-english">Jupiter</div>
+                </div>
+            </div>
+        </section>
+        <section class="letter-section">
+            <div class="letter-header">
+                <div class="letter-number">33. Яя</div>
+                <div class="letter-info">
+                    <h3> I want to congratulate you on having enough patience to reach the end of the alphabet. This 33rd letter ends it.</h3>
+                </div>
+            </div>
+            <div class="letter-info">
+                <p>It sounds like English 'ya' in 'yard' or 'yahoo'. I will mark it as 'ja'</p>
+            </div>
+            <div class="words-grid">
+                <div class="word-card">
+                    <div class="word-icon">🍏</div>
+                    <div class="word-russian">Яблоко</div>
+                    <div class="word-pronunciation">[já-bloh-koh]</div>
+                    <div class="word-english">Apple</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🥚</div>
+                    <div class="word-russian">Яйцо</div>
+                    <div class="word-pronunciation">[jáj-tsoh]</div>
+                    <div class="word-english">Egg</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">🦎</div>
+                    <div class="word-russian">Ящерица</div>
+                    <div class="word-pronunciation">[já-shchje-rhi-tsuh]</div>
+                    <div class="word-english">Lizard</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">📦</div>
+                    <div class="word-russian">Ящик</div>
+                    <div class="word-pronunciation">[já-shchik]</div>
+                    <div class="word-english">Box/Crate</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon">👅</div>
+                    <div class="word-russian">Язык</div>
+                    <div class="word-pronunciation">[já-zyk]</div>
+                    <div class="word-english">Tongue/Language</div>
+                </div>
+                <div class="word-card">
+                    <div class="word-icon"><a href="https://www.flaticon.com/ru/free-icons/" title=" иконки"> иконки от Freepik - Flaticon</a></div>
+                    <div class="word-russian">Япония</div>
+                    <div class="word-pronunciation">[já-poh-ni-ja]</div>
+                    <div class="word-english">Japan</div>
+                </div>
+            </div>
+
+
+
+   
+
+    Яблоко
+    [já-bloh-koh]
+    (Appkle)
+
+
+    Яйцо
+    [jáj-tsoh]
+    (Egg)
+
+
+    Ящерица
+    [já-shchje-rhi-tsuh]
+    (Lizard)
+
+
+    Ящик
+    [já-shchik]
+    (Box/Crate)
+
+
+    Язык
+    [já-zyk]
+    (Tongue/Language)
+
+
+    Япония
+    [já-poh-ni-ja]
+    (Japan)
+
+        <!-- Alphabet Summary -->
+        <section class="alphabet-section">
+            <h1>The Whole Alphabet</h1>
+            <div class="alphabet-row">
+                <div class="alphabet-letters">Аа Бб Вв Гг Дд Ее</div>
+                <div class="alphabet-pronunciation">[uh][be][ve][ge][de][je]</div>
+            </div>
+            <div class="alphabet-row">
+                <div class="alphabet-letters">Ёё Жж Зз Ии Йй</div>
+                <div class="alphabet-pronunciation">[jo][zhe][ze][i][j]</div>
+            </div>
+            <div class="alphabet-row">
+                <div class="alphabet-letters">Кк Лл Мм Нн Оо Пп Рр</div>
+                <div class="alphabet-pronunciation">[kuh][el][em][en][oh][pe][erh]</div>
+            </div>
+            <div class="alphabet-row">
+                <div class="alphabet-letters">Сс Тт Уу Фф Хх Цц Чч</div>
+                <div class="alphabet-pronunciation">[es][te][oo][ef][khuh][tse][che]</div>
+            </div>
+            <div class="alphabet-row">
+                <div class="alphabet-letters">Шш Щщ ъ ы ь Ээ Юю Яя</div>
+                <div class="alphabet-pronunciation">[shuh][shchuh][-][y][-][e][ju][ja]</div>
+            </div>
+        </section>
+
+        <!-- Tasks Section -->
+        <section class="tasks-section">
+            <h1>Tasks</h1>
+            
+            <div class="task-card">
+                <h2><span class="task-number">1</span>Task 1</h2>
+                <div class="task-content">
+                    Read the letters out loud:
+                    <div class="task-text">А, О, Т, Ф, В, Я, Й, С, Ш, Ю, ъ</div>
+                </div>
+            </div>
+            
+            <div class="task-card">
+                <h2><span class="task-number">2</span>Task 2</h2>
+                <div class="task-content">
+                    Read the syllables out loud:
+                    <div class="task-text">ЛА, УС, ТЕ, ДИ, ЭХ, ДОН, КАР, ПРИ, ЗА, ЮГ, ПЬЮ</div>
+                </div>
+            </div>
+            
+            <div class="task-card">
+                <h2><span class="task-number">3</span>Task 3</h2>
+                <div class="task-content">
+                    Read the words out loud (no need to translate):
+                    <div class="task-text">ЛИС, ШКОЛА, ГОЛУБЬ, ЁЖИК, СОСНА, ИГРА, ДЫМ, СЛОН</div>
+                </div>
+            </div>
+            
+            <div class="task-card">
+                <h2><span class="task-number">4</span>Task 4</h2>
+                <div class="task-content">
+                    Translate the words:
+                    <div class="task-text">КОРАБЛЬ, ХЛЕБ, АИСТ, СВИНЬЯ, ДЖИНСЫ, ИНОПЛАНЕТЯНИН, ОБЕЗЬЯНА, МАМА, АМСТЕРДАМ, УКРАИНА</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Random Words Practice -->
+        <section class="random-words-section">
+            <h1>Random Words Practice</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+                Test your knowledge! Click the button to generate random Russian words from this lesson.
+            </p>
+            <button class="generate-btn" onclick="generateRandomWords()">Generate Random Words</button>
+            <div class="random-words-grid" id="randomWordsGrid">
+                <!-- Random words will be populated here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+       
+    </script>
+</body>
+</html>
